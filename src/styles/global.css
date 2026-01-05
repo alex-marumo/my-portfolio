@@ -1,1 +1,56 @@
 @import "tailwindcss";
+
+@theme {
+  --color-coal: #0f172a;
+  --color-electric: #3b82f6;
+  --color-terminal: #22c55e;
+
+  /* Mapping your custom fonts */
+  --font-headline: "Space Grotesk", sans-serif;
+  --font-mono: "Fira Code", monospace;
+  --font-body: "Inter", sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-coal text-white antialiased;
+    font-family: var(--font-body);
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-headline);
+  }
+
+  code,
+  pre {
+    font-family: var(--font-mono);
+  }
+}
+
+/* Custom glow utility for that "Cyber Security" highlight */
+.text-glow-electric {
+  text-shadow: 0 0 8px rgba(59, 130, 246, 0.5);
+}
+
+@keyframes scan {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(450px);
+    opacity: 0;
+  }
+}
+
+/* Add the animation to Tailwind's utility layer */
+@layer utilities {
+  .animate-scan {
+    animation: scan 4s linear infinite;
+  }
+}
