@@ -1,16 +1,26 @@
 ---
-
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { HeroSection } from '../components/HeroSection';
+import { BentoGrid } from '../components/blocks/BentoGrid';
+import { ProjectsGallery } from '../components/blocks/ProjectsGallery';
+import { ContactsSection } from '../components/blocks/ContactsSection';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout title="Portfolio | Alex Marumo">
+  <main>
+    <HeroSection client:load />
+    
+    <div class="max-w-7xl mx-auto px-4">
+       <BentoGrid client:visible />
+       <ProjectsGallery client:visible />
+       <ContactsSection client:visible />
+    </div>
+  </main>
+  <footer class="py-12 border-t border-white/5 text-center">
+    <p class="font-mono text-[10px] text-slate-600 tracking-[0.5em] uppercase">
+      &copy; {new Date().getFullYear()} Alex Marumo // Built with Astro + React
+    </p>
+  </footer>
+</BaseLayout>
+
+
