@@ -7,7 +7,7 @@ interface ProjectCardProps {
   description: string;
   tags: string[];
   imageType: "frontend" | "backend";
-  githubUrl: string;
+  githubUrl: string; // Changed to match the prop used in the component
   liveUrl?: string;
 }
 
@@ -17,49 +17,43 @@ function ProjectCard({
   tags,
   imageType,
   githubUrl = "#",
-  liveUrl = "#",
 }: ProjectCardProps) {
   return (
-    <div className="group relative bg-white/5 border border-white/10 hover:border-electric/50 transition-all duration-300 overflow-hidden">
-      {/* Project Image/Preview Area */}
+    <div className="group relative bg-white/[0.02] backdrop-blur-md border-2 border-electric/20 hover:border-electric/60 transition-all duration-500 overflow-hidden">
+      {/* 1. Project Preview Header */}
       <div className="relative h-56 bg-coal overflow-hidden border-b border-white/10">
         {imageType === "backend" ? (
-          <div className="absolute inset-0 p-6 opacity-40 font-mono text-[10px] leading-relaxed select-none">
+          <div className="absolute inset-0 p-6 opacity-30 font-mono text-[10px] leading-relaxed">
             <pre className="text-terminal">
               {`const secureAPI = async () => {
   const encrypted = await encrypt(data);
   const token = jwt.sign(payload, secret);
   return { encrypted, token };
-};
-
-app.use(helmet());
-app.use(rateLimit({ max: 100 }));`}
+};`}
             </pre>
           </div>
         ) : (
           <div
             className="absolute inset-0 opacity-20"
             style={{
-              backgroundImage: `linear-gradient(#3B82F6 1px, transparent 1px), linear-gradient(90deg, #3B82F6 1px, transparent 1px)`,
+              backgroundImage: `linear-gradient(rgba(59, 130, 246, 0.2) 1px, transparent 1px),
+                                linear-gradient(90deg, rgba(59, 130, 246, 0.2) 1px, transparent 1px)`,
               backgroundSize: "24px 24px",
             }}
           />
         )}
 
-        {/* Hover Overlay */}
-        <div className="absolute inset-0 bg-electric/5 opacity-0 group-hover:opacity-100 transition-opacity" />
-
-        {/* Type Badge */}
-        <div className="absolute top-4 right-4">
-          <span className="px-3 py-1 bg-coal/80 backdrop-blur-md border border-electric/30 text-electric font-mono text-[10px] tracking-widest uppercase">
-            {imageType === "frontend" ? "[ui.ux]" : "[backend.core]"}
+        {/* HUD Type Badge */}
+        <div className="absolute top-4 right-4 z-10">
+          <span className="px-3 py-1 bg-coal/80 border border-electric/40 text-electric font-mono text-[10px] tracking-widest uppercase">
+            {imageType === "frontend" ? "[UI.UX]" : "[CORE.BE]"}
           </span>
         </div>
       </div>
 
-      {/* Content */}
+      {/* 2. Content Section */}
       <div className="p-8">
-        <h3 className="mb-3 font-headline text-xl font-bold text-white tracking-tight">
+        <h3 className="mb-3 font-headline text-xl font-bold text-white tracking-tight group-hover:text-electric transition-colors">
           {title}
         </h3>
 
@@ -67,35 +61,37 @@ app.use(rateLimit({ max: 100 }));`}
           {description}
         </p>
 
-        {/* Tags */}
+        {/* Tech Stack */}
         <div className="flex flex-wrap gap-2 mb-8">
-          {tags.map((tag) => (
+          {tags.map((tag, index) => (
             <span
-              key={tag}
-              className="px-2 py-0.5 bg-white/5 text-slate-400 border border-white/10 font-mono text-[10px]"
+              key={index}
+              className="px-2 py-1 bg-white/5 border border-white/10 text-slate-300 font-mono text-[10px] uppercase"
             >
               {tag}
             </span>
           ))}
         </div>
 
-        {/* Action Buttons */}
+        {/* 3. Tactical Action Buttons */}
         <div className="flex gap-4">
           <a
             href={githubUrl}
-            className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-electric text-white font-mono text-xs font-bold transition-all hover:translate-x-[-2px] hover:translate-y-[-2px] shadow-[4px_4px_0px_rgba(59,130,246,0.3)] hover:shadow-[6px_6px_0px_rgba(59,130,246,0.3)]"
+            className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-electric text-white font-mono text-[10px] font-bold transition-all hover:translate-y-[-2px] shadow-[4px_4px_0px_rgba(59,130,246,0.2)] active:translate-y-0"
           >
             <Github size={14} /> CODE_DEMO
           </a>
-
-          <a
-            href={liveUrl}
-            className="flex-1 flex items-center justify-center gap-2 px-4 py-3 border border-terminal text-terminal font-mono text-xs font-bold transition-all hover:translate-x-[-2px] hover:translate-y-[-2px] shadow-[4px_4px_0px_rgba(34,197,94,0.1)] hover:shadow-[6px_6px_0px_rgba(34,197,94,0.2)]"
-          >
-            <ExternalLink size={14} /> LIVE_PREV
-          </a>
         </div>
       </div>
+
+      {/* 4. THE FIGMA GLOW EFFECT */}
+      <div
+        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none duration-500"
+        style={{
+          boxShadow:
+            "inset 0 0 50px rgba(59, 130, 246, 0.15), inset 0 0 20px rgba(59, 130, 246, 0.1)",
+        }}
+      />
     </div>
   );
 }
@@ -104,42 +100,37 @@ export function ProjectsGallery() {
   const projects = [
     {
       title: "Artistic Marketplace",
-      description: "Frontend of the digital marketplace for local artists.",
-      tags: ["React", "Node.js", "JWT"],
+      description:
+        "A high-performance digital storefront for local artists to showcase and sell creative assets.",
+      tags: ["React", "Node.js", "JWT", "Tailwind"],
       imageType: "frontend" as const,
-      githubURL:
+      githubUrl:
         "https://github.com/alex-marumo/digital-marketplace-frontend.git",
     },
     {
-      title: "Artistic Marketplace",
+      title: "Marketplace Backend",
       description:
-        "Backend of the digital marketplace for local useImperativeHandle.",
-      tags: [
-        "NodeJS, ExpressJS",
-        "PostgreSQL",
-        "JWT",
-        "Keycloak",
-        "Google reCAPTCHA",
-        "Paypal Sandbox",
-      ],
+        "Robust API architecture featuring Keycloak auth, PostgreSQL integration, and PayPal sandbox payments.",
+      tags: ["NodeJS", "PostgreSQL", "Keycloak", "reCAPTCHA"],
       imageType: "backend" as const,
-      githubURL:
+      githubUrl:
         "https://github.com/alex-marumo/digital-marketplace-backend.git",
     },
     {
       title: "Speakless",
       description:
-        "Simple Text-to-speech and speech-to-text accessibility tool.",
-      tags: ["Python", "Whisper", "OpenAI"],
+        "Accessibility utility using OpenAI Whisper for seamless text-to-speech and speech-to-text conversion.",
+      tags: ["Python", "Whisper", "OpenAI", "Automation"],
       imageType: "backend" as const,
-      githubURL: "https://github.com/alex-marumo/Speakless.git",
+      githubUrl: "https://github.com/alex-marumo/Speakless.git",
     },
     {
       title: "Lexical Playground",
-      description: "Simple text editor.",
-      tags: ["React", "Typescript", "Vite", "Lexical"],
+      description:
+        "Advanced rich-text editor environment exploring modern content editable frameworks.",
+      tags: ["React", "Typescript", "Lexical", "Vite"],
       imageType: "frontend" as const,
-      githubURL: "https://github.com/alex-marumo/lexical-playground.git",
+      githubUrl: "https://github.com/alex-marumo/lexical-playground.git",
     },
   ];
 
@@ -155,7 +146,7 @@ export function ProjectsGallery() {
           </p>
         </div>
         <div className="h-[1px] flex-grow bg-white/10 mx-8 hidden md:block mb-3" />
-        <div className="text-terminal font-mono text-xs animate-pulse">
+        <div className="text-terminal font-mono text-[10px] animate-pulse">
           STATUS: 4_PROJECTS_LOADED
         </div>
       </div>
