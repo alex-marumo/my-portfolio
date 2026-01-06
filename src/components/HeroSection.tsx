@@ -120,12 +120,21 @@ export function HeroSection() {
               grow professionally.
             </p>
             <div className="flex flex-wrap gap-6 justify-center lg:justify-start">
-              <button className="px-8 py-4 bg-electric text-white font-mono font-bold transition-all hover:translate-x-[-2px] hover:translate-y-[-2px] active:translate-x-0 active:translate-y-0 shadow-[8px_8px_0px_rgba(59,130,246,0.2)] hover:shadow-[12px_12px_0px_rgba(59,130,246,0.2)]">
+              {/* Action: Scroll to Projects Section */}
+              <a
+                href="#projects"
+                className="px-8 py-4 bg-electric text-white font-mono font-bold transition-all hover:translate-x-[-2px] hover:translate-y-[-2px] active:translate-x-0 active:translate-y-0 shadow-[8px_8px_0px_rgba(59,130,246,0.2)] hover:shadow-[12px_12px_0px_rgba(59,130,246,0.2)] inline-block text-center cursor-pointer"
+              >
                 exec_projects
-              </button>
-              <button className="px-8 py-4 border border-white/20 hover:border-terminal hover:text-terminal transition-all font-mono shadow-[8px_8px_0px_rgba(255,255,255,0.05)]">
+              </a>
+
+              {/* Action: Scroll to Contact Section */}
+              <a
+                href="#contact"
+                className="px-8 py-4 border border-white/20 hover:border-terminal hover:text-terminal transition-all font-mono shadow-[8px_8px_0px_rgba(255,255,255,0.05)] inline-block text-center cursor-pointer"
+              >
                 init_contact
-              </button>
+              </a>
             </div>
           </div>
         </div>
