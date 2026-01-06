@@ -42,7 +42,7 @@ export function ContactsSection() {
       <div className="flex flex-col md:flex-row gap-16 items-start">
         {/* Left Side: Big Headline */}
         <div className="md:w-1/3">
-          <h2 className="font-headline text-5xl font-bold text-white italic leading-tight mb-4">
+          <h2 className="font-headline text-5xl font-bold text-white leading-tight mb-4">
             Get In <br />
             <span className="text-electric">Touch.</span>
           </h2>

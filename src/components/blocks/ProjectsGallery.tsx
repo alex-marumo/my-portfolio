@@ -147,7 +147,7 @@ export function ProjectsGallery() {
     <section id="projects" className="px-6 py-24 max-w-7xl mx-auto bg-coal">
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
         <div>
-          <h2 className="font-headline text-4xl md:text-5xl font-bold text-white mb-4 italic">
+          <h2 className="font-headline text-4xl md:text-5xl font-bold text-white mb-4">
             Featured Projects
           </h2>
           <p className="font-mono text-xs tracking-widest text-slate-500 uppercase">
