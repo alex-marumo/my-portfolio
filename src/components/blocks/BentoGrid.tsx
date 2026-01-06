@@ -113,14 +113,14 @@ export function BentoGrid() {
   ];
 
   return (
-    <section className="px-6 py-24 max-w-7xl mx-auto bg-coal">
+    <section id="arsenal" className="px-6 py-24 max-w-7xl mx-auto bg-coal">
       <div className="mb-16">
-        <h2 className="font-headline text-4xl md:text-5xl font-bold text-white mb-4 italic">
+        <h2 className="font-headline text-4xl md:text-5xl font-bold text-white mb-4">
           Technical Arsenal
         </h2>
         <div className="h-1 w-20 bg-electric mb-6" />
         <p className="font-mono text-xs tracking-widest text-slate-500 uppercase">
-          [core.competencies] // Qualified Software engineer and growing
+          [core.competencies] || Qualified Software engineer and growing
           pentester.
         </p>
       </div>

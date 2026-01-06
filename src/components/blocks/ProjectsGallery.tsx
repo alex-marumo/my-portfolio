@@ -144,14 +144,14 @@ export function ProjectsGallery() {
   ];
 
   return (
-    <section className="px-6 py-24 max-w-7xl mx-auto bg-coal">
+    <section id="projects" className="px-6 py-24 max-w-7xl mx-auto bg-coal">
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
         <div>
           <h2 className="font-headline text-4xl md:text-5xl font-bold text-white mb-4 italic">
             Featured Projects
           </h2>
           <p className="font-mono text-xs tracking-widest text-slate-500 uppercase">
-            [project.archive] // Building secure, scalable solutions
+            [project.archive] || Building secure, scalable solutions
           </p>
         </div>
         <div className="h-[1px] flex-grow bg-white/10 mx-8 hidden md:block mb-3" />

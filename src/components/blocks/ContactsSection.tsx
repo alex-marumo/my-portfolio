@@ -38,7 +38,7 @@ export function ContactsSection() {
   ];
 
   return (
-    <section className="py-24 max-w-7xl mx-auto px-6">
+    <section id="contact" className="py-24 max-w-7xl mx-auto px-6">
       <div className="flex flex-col md:flex-row gap-16 items-start">
         {/* Left Side: Big Headline */}
         <div className="md:w-1/3">
@@ -52,7 +52,8 @@ export function ContactsSection() {
 
           {/* CV Button */}
           <a
-            href="/resume.pdf"
+            href="/Alex-Resume.pdf"
+            download
             target="_blank"
             className="group flex items-center justify-between w-full max-w-xs px-6 py-4 bg-white/5 border-white/10 text-white font-mono text-xs tracking-widest hover:bg-electric transition-all shadow-[6px_6px_0px_rgba(255,255,255,0.05)] hover:shadow-[px_8px_0px_rgba(59,130,246,0.2)]"
           >

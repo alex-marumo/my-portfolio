@@ -54,3 +54,7 @@
     animation: scan 4s linear infinite;
   }
 }
+
+html {
+  scroll-behavior: smooth;
+}
